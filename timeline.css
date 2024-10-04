@@ -1,0 +1,182 @@
+/* Timeline styles */
+.timeline {
+  list-style: none;
+  padding: 20px 0;
+  position: relative;
+}
+
+.timeline:before {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 3px;
+  background-color: #5468A9;
+  left: 50%;
+  margin-left: -1.5px;
+}
+
+.timeline > li {
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.timeline > li:before,
+.timeline > li:after {
+  content: " ";
+  display: table;
+}
+
+.timeline > li:after {
+  clear: both;
+}
+
+.timeline > li > .timeline-panel {
+  width: 50%;
+  float: left;
+  border: 1px solid #d4d4d4;
+  border-radius: 20px;
+  padding: 20px;
+  position: relative;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+
+.timeline > li.timeline-inverted > .timeline-panel {
+  float: right;
+}
+
+.timeline > li:not(.timeline-inverted) {
+  padding-right: 90px;
+}
+
+.timeline > li.timeline-inverted {
+  padding-left: 90px;
+}
+
+.timeline > li > .timeline-badge {
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 1.4em;
+  text-align: center;
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  margin-left: -25px;
+  background-color: rgb(220, 99, 99);
+  border-radius: 50%;
+}
+
+.timeline-badge.primary {
+  background-color: #5468A9 !important;
+}
+
+.timeline-badge.success {
+  background-color: #89C082 !important;
+}
+
+.timeline-badge.warning {
+  background-color: #f0ad4e !important;
+}
+
+.timeline-badge.danger {
+  background-color: #d9534f !important;
+}
+
+.timeline-title {
+  margin-top: 0;
+  color: inherit;
+}
+
+.timeline-body > p,
+.timeline-body > ul {
+  margin-bottom: 0;
+}
+
+.timeline-body > p + p {
+  margin-top: 5px;
+}
+
+.timeline:before {
+  left: 50%;
+  margin-left: -1.5px; /* Giữ vị trí đường timeline ở giữa */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .timeline:before {
+    left: 50%;
+    margin-left: -1.5px; /* Căn giữa đường timeline trên thiết bị nhỏ */
+    z-index: -1;
+  }
+
+  .timeline > li > .timeline-panel {
+    width: 90%; /* Đảm bảo các panel chiếm 90% chiều rộng màn hình */
+    float: none;
+    margin: 0 auto 20px; /* Căn giữa các panel */
+    z-index: 1;
+    background-image: linear-gradient(to bottom, #89C082, #5468A9);
+  }
+
+  .timeline > li > .timeline-badge {
+    left: 50%;
+    margin-left: -25px; /* Căn giữa badge */
+    z-index: -1;
+  }
+
+  .timeline > li.timeline-inverted > .timeline-panel {
+    float: none; /* Đảm bảo panel đảo ngược không bị lệch */
+    z-index: 1;
+  }
+
+  .timeline > li:not(.timeline-inverted) {
+    padding-right: 0; /* Loại bỏ padding không cần thiết */
+  }
+
+  .timeline > li.timeline-inverted {
+    padding-left: 0; /* Loại bỏ padding không cần thiết */
+  }
+
+  /* Panel content truncation for mobile */
+  .timeline-panel {
+    position: relative;
+  }
+
+  .timeline-panel .timeline-body {
+    max-height: 150px; /* Giới hạn chiều cao của panel */
+    overflow: hidden;
+    position: relative;
+    padding-bottom: 20px; /* Chừa khoảng trống cho nút Xem thêm */
+  }
+
+  .timeline-panel .timeline-body.expanded {
+    max-height: none; /* Bỏ giới hạn chiều cao khi người dùng bấm Xem thêm */
+  }
+
+  .timeline-panel .read-more {
+    display: block;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 5px 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    cursor: pointer;
+    font-weight: bold;
+    z-index: 2;
+  }
+
+  .timeline-panel .read-more.hide {
+    display: none; /* Ẩn nút Xem thêm khi người dùng đã mở rộng nội dung */
+  }
+
+}
+/* Ẩn nút "Xem thêm" trên giao diện lớn hơn 768px */
+@media (min-width: 769px) {
+.timeline-panel .read-more {
+  display: none;
+}
+}
+
